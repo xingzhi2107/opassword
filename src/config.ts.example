@@ -1,0 +1,2 @@
+export const SECRET = '5dad91dfe6c6cb74a507937face6a029';
+export const PASSWORD_SALT = 'e8df3ee8a3f5a9d23dadbba167b4580ah';
