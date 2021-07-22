@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
 import { IsEmail, Length, IsOptional } from 'class-validator';
 import { OPBaseEntity } from '../common/common.entity';
 
-@Entity('user')
+@Entity('User')
 @Index('email_removeAt_index', ['email', 'removedAt'], { unique: true })
 export class UserEntity extends OPBaseEntity {
   @PrimaryGeneratedColumn()

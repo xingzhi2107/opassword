@@ -1,12 +1,10 @@
-import {
-  NestMiddleware,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { NestMiddleware, Injectable } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { SECRET } from '../config';
 import { UserService } from './user.service';
+import { OPException } from '../common/common.error';
+import { UserErrorCodes } from './user.error';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
@@ -20,13 +18,13 @@ export class AuthMiddleware implements NestMiddleware {
       const user = await this.userService.fetchUserById(decoded.id);
 
       if (!user) {
-        throw new UnauthorizedException();
+        throw new OPException(UserErrorCodes.UnauthorizedException);
       }
 
       (req as any).user = user.user;
       next();
     } else {
-      throw new UnauthorizedException();
+      throw new OPException(UserErrorCodes.UnauthorizedException);
     }
   }
 }
