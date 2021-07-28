@@ -109,8 +109,7 @@ export class OPasswordApis {
     if (authToken) {
       headers.Authorization = 'Bearer ' + authToken;
     }
-    // const baseURL = host + '/api';
-    const baseURL = host;
+    const baseURL = host + '/api';
 
     return axios.create({
       baseURL,

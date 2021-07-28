@@ -9,6 +9,7 @@ async function bootstrap() {
   app.use(loggerMiddleware);
   app.useGlobalInterceptors(new OPResInterceptor());
   app.useGlobalFilters(new OPExceptionFilter());
+  app.setGlobalPrefix('/api');
 
   await app.listen(3000);
 }

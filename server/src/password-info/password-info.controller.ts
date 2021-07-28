@@ -25,7 +25,6 @@ export class PasswordInfoController {
 
   @Post('/')
   create(@CurrUser('id') userId: number, @Body() dto: CreatePasswordInfoDto) {
-    console.log('zhenguo debug, userId: ', userId);
     return this.passwordInfoService.createPasswordInfo(userId, dto);
   }
 
