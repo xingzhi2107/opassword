@@ -1,8 +1,8 @@
 {
-  "name": "opassword-js-sdk",
+  "name": "@xingzhi2107/opassword-js-sdk",
   "version": "1.0.0",
   "description": "提供js通用的业务逻辑、请求、eneity类型、const等",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
@@ -20,5 +20,10 @@
   },
   "dependencies": {
     "axios": "^0.21.1"
+  },
+  "repository": {
+	  "type": "git",
+	  "url": "ssh://git@github.com/xingzhi2107/opassword.git",
+	  "directory": "sdk"
   }
 }

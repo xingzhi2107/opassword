@@ -1,0 +1,29 @@
+name: publish sdk
+on:
+  push:
+    tags:
+      - 'js-sdk_v*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.16.x'
+        registry-url: 'https://npm.pkg.github.com'
+    - name: Install dependencies
+      shell: bash
+      working-directory: sdk
+      run: yarn install
+    - name: Build
+      working-directory: sdk
+      shell: bash
+      run: yarn run build
+    - name: Publish
+      shell: bash
+      working-directory: sdk
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
