@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-class HomePage extends PureComponent<Props, State> {
+class PasswordListPage extends PureComponent<Props, State> {
   render() {
     const { classes } = this.props;
     return (
@@ -40,4 +40,4 @@ class HomePage extends PureComponent<Props, State> {
   }
 }
 
-export default withStyles(styles)(HomePage);
+export default withStyles(styles)(PasswordListPage);
