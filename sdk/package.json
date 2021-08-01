@@ -21,6 +21,9 @@
   "dependencies": {
     "axios": "^0.21.1"
   },
+  "publishConfig": {
+	  "registry": "https://npm.pkg.github.com"
+  },
   "repository": {
 	  "type": "git",
 	  "url": "ssh://git@github.com/xingzhi2107/opassword.git",
