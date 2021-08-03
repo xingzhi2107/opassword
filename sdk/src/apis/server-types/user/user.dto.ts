@@ -1,13 +1,13 @@
-export class SignUpByEmailDto {
-  readonly email: string;
-  readonly password: string;
+export interface SignUpByEmailDto {
+  email: string;
+  password: string;
 }
-export class LoginByPasswordDto {
-  readonly email: string;
-  readonly password: string;
+export interface LoginByPasswordDto {
+  email: string;
+  password: string;
 }
-export class PatchUpdateProfileDto {
-  readonly nickname?: string;
-  readonly bio?: string;
-  readonly profileUrl?: string;
+export interface PatchUpdateProfileDto {
+  nickname?: string;
+  bio?: string;
+  profileUrl?: string;
 }

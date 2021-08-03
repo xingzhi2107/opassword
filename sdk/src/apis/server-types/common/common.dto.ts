@@ -1,13 +1,13 @@
-export class FetchSimpleListEntitiesDto {
+export interface FetchSimpleListEntitiesDto {
   ids: number[];
   cols: string[];
 }
-export class QuerySimpleListIdsDto {
-  readonly page: number;
-  readonly perPage: number;
-  readonly orderBy: {
+
+export interface QuerySimpleListIdsDto {
+  page: number;
+  perPage: number;
+  orderBy: {
     col: string;
     order: 'ASC' | 'DESC';
   };
-  constructor(query: any);
 }
