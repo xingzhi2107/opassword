@@ -1,6 +1,6 @@
 {
   "name": "@xingzhi2107/opassword-js-sdk",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "提供js通用的业务逻辑、请求、eneity类型、const等",
   "main": "dist/index.js",
   "license": "MIT",
