@@ -1,8 +1,8 @@
-export declare class FetchSimpleListEntitiesDto {
+export class FetchSimpleListEntitiesDto {
   ids: number[];
   cols: string[];
 }
-export declare class QuerySimpleListIdsDto {
+export class QuerySimpleListIdsDto {
   readonly page: number;
   readonly perPage: number;
   readonly orderBy: {

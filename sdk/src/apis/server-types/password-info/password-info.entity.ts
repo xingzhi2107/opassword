@@ -1,5 +1,5 @@
 import { OPBaseEntity } from '../common/common.entity';
-export declare class PasswordInfoEntity extends OPBaseEntity {
+export class PasswordInfoEntity extends OPBaseEntity {
   id: number;
   userId: number;
   name: string;

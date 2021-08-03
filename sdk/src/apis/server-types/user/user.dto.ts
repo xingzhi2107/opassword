@@ -1,12 +1,12 @@
-export declare class SignUpByEmailDto {
+export class SignUpByEmailDto {
   readonly email: string;
   readonly password: string;
 }
-export declare class LoginByPasswordDto {
+export class LoginByPasswordDto {
   readonly email: string;
   readonly password: string;
 }
-export declare class PatchUpdateProfileDto {
+export class PatchUpdateProfileDto {
   readonly nickname?: string;
   readonly bio?: string;
   readonly profileUrl?: string;

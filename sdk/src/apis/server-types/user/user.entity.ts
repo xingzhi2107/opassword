@@ -1,5 +1,5 @@
 import { OPBaseEntity } from '../common/common.entity';
-export declare class UserEntity extends OPBaseEntity {
+export class UserEntity extends OPBaseEntity {
   id: number;
   email: string;
   nickname: string;

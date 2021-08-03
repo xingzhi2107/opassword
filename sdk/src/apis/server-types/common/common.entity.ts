@@ -1,4 +1,4 @@
-export declare class OPBaseEntity {
+export class OPBaseEntity {
   createdAt: Date;
   updatedAt: Date;
   removedAt: Date;
