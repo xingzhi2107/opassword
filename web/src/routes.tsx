@@ -27,7 +27,7 @@ export const routes: RouteConfig[] = [
     path: '/login',
     exact: true,
     render: () => {
-      return <LoginPage />;
+      return <LoginPage testId="ad" />;
     },
   },
   {
