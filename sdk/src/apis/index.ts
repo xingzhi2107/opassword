@@ -3,6 +3,7 @@ import { UserRO } from './server-types/user/user.interface';
 import {
   LoginByPasswordDto,
   PatchUpdateProfileDto,
+  SignUpByEmailDto,
 } from './server-types/user/user.dto';
 import {
   CreatePasswordInfoDto,
@@ -33,8 +34,19 @@ interface SimpleIdsQuery {
 export class OPasswordApis {
   private readonly httpClient: AxiosInstance;
 
-  constructor(private host: string, private authToken: string | null = null) {
-    this.httpClient = this.setupHttpClient(host, authToken);
+  constructor(
+    private baseUrl: string,
+    private authToken: string | null = null,
+  ) {
+    this.httpClient = this.setupHttpClient(baseUrl, authToken);
+  }
+
+  public signUp(dto: SignUpByEmailDto) {
+    return this.req<UserRO>({
+      method: 'post',
+      url: '/user//sign-up-by-email',
+      data: dto,
+    });
   }
 
   public login(dto: LoginByPasswordDto) {
@@ -100,7 +112,7 @@ export class OPasswordApis {
   }
 
   private setupHttpClient(
-    host: string,
+    baseURL: string,
     authToken: string | null = null,
   ): AxiosInstance {
     const headers: any = {
@@ -109,7 +121,6 @@ export class OPasswordApis {
     if (authToken) {
       headers.Authorization = 'Bearer ' + authToken;
     }
-    const baseURL = host + '/api';
 
     return axios.create({
       baseURL,
