@@ -32,29 +32,43 @@ interface SimpleIdsQuery {
 }
 
 export class OPasswordApis {
-  private readonly httpClient: AxiosInstance;
+  private httpClient: AxiosInstance;
 
   constructor(
     private baseUrl: string,
     private authToken: string | null = null,
+    private autoSetAuthToken = true,
   ) {
     this.httpClient = this.setupHttpClient(baseUrl, authToken);
   }
 
-  public signUp(dto: SignUpByEmailDto) {
-    return this.req<UserRO>({
+  public setupAuthToken(authToken: string) {
+    this.authToken = authToken;
+    this.httpClient = this.setupHttpClient(this.baseUrl, this.authToken);
+  }
+
+  public async signUp(dto: SignUpByEmailDto) {
+    const res = await this.req<UserRO>({
       method: 'post',
       url: '/user//sign-up-by-email',
       data: dto,
     });
+    if (res.errcode === 0 && this.autoSetAuthToken) {
+      this.setupAuthToken(res.data.token);
+    }
+    return res;
   }
 
-  public login(dto: LoginByPasswordDto) {
-    return this.req<UserRO>({
+  public async login(dto: LoginByPasswordDto) {
+    const res = await this.req<UserRO>({
       method: 'post',
       url: '/user/login-by-email',
       data: dto,
     });
+    if (res.errcode === 0 && this.autoSetAuthToken) {
+      this.setupAuthToken(res.data.token);
+    }
+    return res;
   }
 
   public patchUpdateProfile(dto: PatchUpdateProfileDto) {
