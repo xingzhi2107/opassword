@@ -31,7 +31,9 @@ export class UserController {
   }
 
   @Get('/curr-user')
-  getCurrUser(@CurrUser() user: UserRO) {
-    return user;
+  getCurrUser(@CurrUser() user: UserData): UserRO {
+    return {
+      user,
+    };
   }
 }
