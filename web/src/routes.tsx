@@ -7,6 +7,8 @@ import SignUpPage from './pages/SignUpPage';
 import PasswordListPage from './pages/PasswordListPage';
 import PasswordDetailPage from './pages/PasswordDetailPage';
 
+import AuthPageContainer from './components/AuthRoute';
+
 /* eslint-disable react/no-multi-comp */
 export const routes: RouteConfig[] = [
   {
@@ -34,7 +36,11 @@ export const routes: RouteConfig[] = [
     path: '/passwords',
     exact: true,
     render: () => {
-      return <PasswordListPage />;
+      return (
+        <AuthPageContainer>
+          <PasswordListPage />
+        </AuthPageContainer>
+      );
     },
   },
   {

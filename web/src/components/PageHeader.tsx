@@ -1,43 +1,63 @@
 import React from 'react';
 import { PureComponent } from 'react';
-import withStyles, { WithStylesProps } from 'react-jss';
+import withStyles, { Styles, WithStylesProps } from 'react-jss';
+import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { Stores } from '../stores';
+import { connMobx } from '../hoc/mobx';
 
-interface Props extends WithStylesProps<typeof styles> {}
+interface Props
+  extends WithStylesProps<typeof styles>,
+    ReturnType<typeof mapStoresToInjects> {}
 
 interface State {}
 
-const styles = {
-  myButton: {
-    color: 'green',
-    margin: {
-      // jss-plugin-expand gives more readable syntax
-      top: 5, // jss-plugin-default-unit makes this 5px
-      right: 0,
-      bottom: 0,
-      left: '1rem',
-    },
-    '& span': {
-      // jss-plugin-nested applies this to a child span
-      fontWeight: 'bold', // jss-plugin-camel-case turns this into 'font-weight'
-    },
+const styles: Styles = {
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: [10, 16],
+    borderBottom: [1, 'solid', '#eee'],
   },
-  myLabel: {
-    fontStyle: 'italic',
+  nav: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  navItem: {
+    margin: [0, 10],
   },
 };
 
+@observer
 class PageHeader extends PureComponent<Props, State> {
   render() {
-    const { classes } = this.props;
+    const { classes, authStore } = this.props;
     return (
-      <div>
-        <h1>{'Home page'}</h1>
-        <button className={classes.myButton} type="button">
-          {'Button'}
-        </button>
-      </div>
+      <header className={classes.header}>
+        <nav className={classes.nav}>
+          <Link className={classes.navItem} to="/">
+            {'Home'}
+          </Link>
+          <Link className={classes.navItem} to="/passwords">
+            {'Passwords'}
+          </Link>
+          <Link className={classes.navItem} to="/sign-up">
+            {'Sign Up'}
+          </Link>
+          <Link className={classes.navItem} to="/login">
+            {'Login'}
+          </Link>
+        </nav>
+        <div>{authStore.currentUser?.email}</div>
+      </header>
     );
   }
 }
 
-export default withStyles(styles)(PageHeader);
+function mapStoresToInjects(stores: Stores) {
+  return {
+    authStore: stores.authStore,
+  };
+}
+
+export default connMobx(mapStoresToInjects)(withStyles(styles)(PageHeader));

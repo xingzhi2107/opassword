@@ -1,6 +1,11 @@
-import { observable, action } from 'mobx';
+import { observable, action, makeObservable } from 'mobx';
 import { passwordApis } from '../ApiClient';
-import { LoginByPasswordDto, UserData } from '@xingzhi2107/opassword-js-sdk';
+import {
+  LoginByPasswordDto,
+  SignUpByEmailDto,
+  UserData,
+} from '@xingzhi2107/opassword-js-sdk';
+import { appStore } from './AppStore';
 
 export class AuthStore {
   @observable
@@ -8,6 +13,10 @@ export class AuthStore {
 
   @observable
   public inProgress = false;
+
+  constructor() {
+    makeObservable(this);
+  }
 
   @action
   pullCurrUser = async () => {
@@ -18,15 +27,16 @@ export class AuthStore {
     this.currentUser = res.data.user;
     this.inProgress = false;
 
-    return this.currentUser;
+    return res;
   };
 
   @action
-  registry = async (dto: LoginByPasswordDto) => {
+  signUp = async (dto: SignUpByEmailDto) => {
     if (this.inProgress) return;
     this.inProgress = true;
-    const res = await passwordApis.login(dto);
+    const res = await passwordApis.signUp(dto);
     this.currentUser = res.data.user;
+    appStore.setAuthToken(res.data.token || '');
     this.inProgress = false;
 
     return this.currentUser;
@@ -37,9 +47,12 @@ export class AuthStore {
     if (this.inProgress) return;
     this.inProgress = true;
     const res = await passwordApis.login(dto);
+    appStore.setAuthToken(res.data.token || '');
     this.currentUser = res.data.user;
     this.inProgress = false;
 
     return this.currentUser;
   };
 }
+
+export const authStore = new AuthStore();

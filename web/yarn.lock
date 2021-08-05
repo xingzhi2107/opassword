@@ -2242,10 +2242,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@xingzhi2107/opassword-js-sdk@1.0.0-rc.2":
-  version "1.0.0-rc.2"
-  resolved "https://npm.pkg.github.com/download/@xingzhi2107/opassword-js-sdk/1.0.0-rc.2/402ae4a2e0b44e00f1222bca5ca8f89e0dbd9ce594414ddc6d1e9a9cca52a5f8#18a0d60807dd760193ced829a70a7cae9570d5b7"
-  integrity sha512-Y7dZbg+EnHPw3wC3dFe0omQbyrLKxHYFWZ4uy6yyNZE6FxIfFDDnEQVD26aptN6djLTf4i8DOUp2aAuZ52A5+A==
+"@xingzhi2107/opassword-js-sdk@1.0.0-rc.4":
+  version "1.0.0-rc.4"
+  resolved "https://npm.pkg.github.com/download/@xingzhi2107/opassword-js-sdk/1.0.0-rc.4/fc494f6c8c88dfc8b980606e6557b375a0a159f66ff637c7f17e65a182a055a1#08b19bc9137502e68f5591dc7189cd98f4cb24bd"
+  integrity sha512-IfyNgomVUIR+tNPTCvbbXcbUlEKiYTslcqVsjlLZPgJucz3tSz9i6CGxo07HwyFUo8vYddHfAncjU1QaEGHqWQ==
   dependencies:
     axios "^0.21.1"
 

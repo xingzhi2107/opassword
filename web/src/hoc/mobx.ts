@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
-import { inject } from 'mobx-react';
 import { Stores } from '../stores';
+import { inject } from 'mobx-react';
 
 export function connMobx<InjectProps>(
   mapStoresToInjected: (stores: Stores, ownProps: any) => InjectProps,

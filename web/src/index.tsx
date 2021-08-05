@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react';
+
 import './index.css';
 import './ApiClient';
 import reportWebVitals from './reportWebVitals';
-import { renderRoutes } from 'react-router-config';
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import { Provider } from 'mobx-react';
-
-import { routes } from './routes';
 import { stores } from './stores';
-
-const history = createBrowserHistory();
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider {...stores}>
-      <Router history={history}>{renderRoutes(routes)}</Router>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

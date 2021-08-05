@@ -31,7 +31,7 @@ class PasswordListPage extends PureComponent<Props, State> {
     const { classes } = this.props;
     return (
       <div>
-        <h1>{'Home page'}</h1>
+        <h1>{'Passwords Page'}</h1>
         <button className={classes.myButton} type="button">
           {'Button'}
         </button>

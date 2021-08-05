@@ -1,9 +1,11 @@
-import { AuthStore } from './AuthStore';
+import { appStore } from './AppStore';
+import { authStore } from './AuthStore';
 
 export const stores = {
-  authStore: new AuthStore(),
+  authStore,
+  appStore,
 };
 
-export interface Stores {
-  authStore: AuthStore;
-}
+(window as any)._____APP_STATE_____ = stores;
+
+export type Stores = typeof stores;
