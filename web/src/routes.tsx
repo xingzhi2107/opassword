@@ -5,7 +5,7 @@ import IntroPage from './pages/IntroPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import PasswordListPage from './pages/PasswordListPage';
-import PasswordDetailPage from './pages/PasswordDetailPage';
+import CreateEditPasswordPage from './pages/CreateEditPasswordPage';
 
 import AuthPageContainer from './components/AuthRoute';
 
@@ -29,7 +29,7 @@ export const routes: RouteConfig[] = [
     path: '/login',
     exact: true,
     render: () => {
-      return <LoginPage testId="ad" />;
+      return <LoginPage />;
     },
   },
   {
@@ -44,12 +44,27 @@ export const routes: RouteConfig[] = [
     },
   },
   {
+    path: '/passwords/new',
+    exact: true,
+    render: () => {
+      return (
+        <AuthPageContainer>
+          <CreateEditPasswordPage />
+        </AuthPageContainer>
+      );
+    },
+  },
+  {
     path: '/passwords/:id',
     exact: true,
-    render: (props: RouteConfigComponentProps<{ idStr: string }>) => {
+    render: (props: RouteConfigComponentProps<{ id: string }>) => {
       const { match } = props;
-      const passwordId = Number.parseInt(match.params.idStr, 10);
-      return <PasswordDetailPage passwordId={passwordId} />;
+      const passwordId = Number.parseInt(match.params.id, 10);
+      return (
+        <AuthPageContainer>
+          <CreateEditPasswordPage passwordId={passwordId} />
+        </AuthPageContainer>
+      );
     },
   },
 ];

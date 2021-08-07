@@ -28,13 +28,9 @@ const styles = {
 
 class IntroPage extends PureComponent<Props, State> {
   render() {
-    const { classes } = this.props;
     return (
       <div>
-        <h1>{'Home page'}</h1>
-        <button className={classes.myButton} type="button">
-          {'Button'}
-        </button>
+        <h1>{'OPassword'}</h1>
       </div>
     );
   }

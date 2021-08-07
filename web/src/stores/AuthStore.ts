@@ -53,6 +53,12 @@ export class AuthStore {
 
     return this.currentUser;
   };
+
+  @action
+  logout = async () => {
+    appStore.setAuthToken('');
+    this.currentUser = null;
+  };
 }
 
 export const authStore = new AuthStore();

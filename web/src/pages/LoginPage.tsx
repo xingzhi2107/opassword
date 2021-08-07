@@ -1,114 +1,109 @@
-import React, { ChangeEvent, MouseEvent } from 'react';
+import React from 'react';
 import { PureComponent } from 'react';
 import { WithStylesProps, Styles } from 'react-jss';
 import { observer } from 'mobx-react';
 import { Stores } from '../stores';
 import { connMobx } from '../hoc/mobx';
 import { connJss } from '../hoc/jss';
+import { Button, FieldSet, Form, TextInput } from '../components/ui';
+import { makeObservable, observable } from 'mobx';
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
-interface OwnProps {
-  testId: string;
-}
+interface OwnProps {}
 
 interface Props
   extends WithStylesProps<typeof styles>,
     ReturnType<typeof mapStoresToInjects>,
+    RouteComponentProps<Record<string, never>>,
     OwnProps {}
 
 interface State {
-  email: string;
-  password: string;
+  submitting: boolean;
 }
 
 const styles: Styles = {
-  loginBtn: {
-    color: 'green',
-    margin: {
-      // jss-plugin-expand gives more readable syntax
-      top: 5, // jss-plugin-default-unit makes this 5px
-      right: 0,
-      bottom: 0,
-      left: '1rem',
-    },
-    '& span': {
-      // jss-plugin-nested applies this to a child span
-      fontWeight: 'bold', // jss-plugin-camel-case turns this into 'font-weight'
-    },
+  form: {
+    marginTop: 50,
+  },
+  btnContainer: {
+    display: 'flex',
   },
 };
 
 @observer
 class LoginPage extends PureComponent<Props, State> {
-  state = {
+  @observable
+  formData = {
     email: '',
     password: '',
   };
 
+  constructor(props: Props) {
+    super(props);
+    makeObservable(this);
+    this.state = {
+      submitting: false,
+    };
+  }
+
   render() {
-    const { classes, authStore } = this.props;
-    const { email, password } = this.state;
+    const { classes } = this.props;
+    const { submitting } = this.state;
     return (
       <div>
-        <h1>{'登录'}</h1>
-        <form>
-          <div>
-            <label>{'邮箱'}</label>
-            <input
+        <Form className={classes.form}>
+          <FieldSet legend="登录">
+            <TextInput
+              name="email"
+              value={this.formData.email}
               type="email"
-              value={email}
-              placeholder="example@mail.com"
-              onChange={this.handleEmailChange}
+              label="邮箱"
+              onTextChange={this.handleEmailChanged}
+              autoFocus
             />
-          </div>
-          <div>
-            <label>{'密码'}</label>
-            <input
+            <TextInput
+              name="password"
               type="password"
-              value={password}
-              onChange={this.handlePasswordChange}
+              value={this.formData.password}
+              label="密码"
+              onTextChange={this.handlePasswordChanged}
             />
-          </div>
-          <div>
-            <button
-              type="submit"
-              onClick={this.handleClickLogin}
-              disabled={authStore.inProgress}
-              className={classes.loginBtn}
-            >
-              {'登录'}
-            </button>
-          </div>
-        </form>
+            <div className={classes.btnContainer}>
+              <Button
+                text="登录"
+                onClick={this.handleClickLogin}
+                disabled={submitting}
+              />
+            </div>
+          </FieldSet>
+        </Form>
       </div>
     );
   }
 
-  private handleClickLogin = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const { authStore } = this.props;
-    const { email, password } = this.state;
-    authStore.login({
+  private handleClickLogin = async () => {
+    const { authStore, history } = this.props;
+    const { email, password } = this.formData;
+    if (this.state.submitting) {
+      return;
+    }
+    this.setState({
+      submitting: true,
+    });
+    await authStore.login({
       email: email.trim(),
       password,
     });
-  };
-
-  private handleInputChange = (
-    key: string,
-    e: ChangeEvent<HTMLInputElement>,
-  ) => {
     this.setState({
-      [key]: e.target.value,
-    } as any);
+      submitting: false,
+    });
+    history.push('/passwords');
   };
 
-  private handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.handleInputChange('email', e);
-  };
+  handleEmailChanged = (text: string) => (this.formData.email = text);
 
-  private handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.handleInputChange('password', e);
-  };
+  handlePasswordChanged = (text: string) => (this.formData.password = text);
 }
 
 function mapStoresToInjects(stores: Stores, ownProps: OwnProps) {
@@ -117,4 +112,6 @@ function mapStoresToInjects(stores: Stores, ownProps: OwnProps) {
   };
 }
 
-export default connMobx(mapStoresToInjects)(connJss(styles)(LoginPage));
+export default connMobx(mapStoresToInjects)(
+  connJss(styles)(withRouter(LoginPage)),
+);

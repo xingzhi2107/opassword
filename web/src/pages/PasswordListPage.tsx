@@ -1,10 +1,18 @@
 import React from 'react';
 import { PureComponent } from 'react';
 import withStyles, { WithStylesProps } from 'react-jss';
+import { PasswordInfoPlainData } from '@xingzhi2107/opassword-js-sdk';
+import { passwordApis } from '../ApiClient';
+import { Link } from 'react-router-dom';
+import { Button } from '../components/ui';
+import { MiscUtils } from '../utils/MiscUtils';
 
 interface Props extends WithStylesProps<typeof styles> {}
 
-interface State {}
+interface State {
+  loading: boolean;
+  passwords: Partial<PasswordInfoPlainData>[];
+}
 
 const styles = {
   myButton: {
@@ -27,17 +35,77 @@ const styles = {
 };
 
 class PasswordListPage extends PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      loading: true,
+      passwords: [],
+    };
+  }
+
+  async componentDidMount() {
+    const idsRes = await passwordApis.fetchPasswordInfoIds({
+      'per-page': 100,
+    });
+
+    const infosRes = await passwordApis.fetchPasswordInfos({
+      ids: idsRes.data.ids,
+      cols: ['id', 'name', 'account', 'encryptedPassword', 'webSite', 'note'],
+    });
+
+    this.setState({
+      loading: false,
+      passwords: infosRes.data.items,
+    });
+  }
+
   render() {
-    const { classes } = this.props;
+    const { passwords, loading } = this.state;
+    if (loading) {
+      return null;
+    }
     return (
       <div>
-        <h1>{'Passwords Page'}</h1>
-        <button className={classes.myButton} type="button">
-          {'Button'}
-        </button>
+        <div>{passwords.map((x) => this.renderPasswordItem(x))}</div>
       </div>
     );
   }
+
+  renderPasswordItem(item: Partial<PasswordInfoPlainData>) {
+    return (
+      <div>
+        <span>{item.id}</span>
+        <span>{item.name}</span>
+        <span>{item.account}</span>
+        <span>{item.webSite}</span>
+        <span>{item.note}</span>
+        <span>
+          <Button
+            text="获取密码"
+            onClick={() => this.handlePressGetPassword(item)}
+          />
+          <Link to={`/passwords/${item.id}`}>{'修改'}</Link>
+          <Button
+            text="删除"
+            onClick={() => this.handlePressDeletePassword(item)}
+          />
+        </span>
+      </div>
+    );
+  }
+
+  handlePressGetPassword = async (item: Partial<PasswordInfoPlainData>) => {
+    if (item.encryptedPassword) {
+      await MiscUtils.setClipboard(item.encryptedPassword);
+    }
+  };
+
+  handlePressDeletePassword = async (item: Partial<PasswordInfoPlainData>) => {
+    await passwordApis.softDeletePasswordInfo(item.id!);
+    this.setState({
+      passwords: this.state.passwords.filter((x) => x.id === item.id),
+    });
+  };
 }
 
 export default withStyles(styles)(PasswordListPage);

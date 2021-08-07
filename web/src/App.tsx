@@ -28,6 +28,12 @@ const styles: Styles = {
   },
   pageMainContent: {
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    '& > div': {
+      flex: 1,
+      minHeight: 0,
+    },
   },
 };
 

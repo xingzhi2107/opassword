@@ -15,6 +15,11 @@
 - [ ] 体验优化  
   - [ ] css样式
   - [ ] 表单校验与
+- [ ] 待研究问题
+  - [ ] 为什么connJss/withStyles的组件props没办法go to define？ts的补全性能变得极差。
+  - [ ] mobx不推荐直接修改obs，要用action来mutation，看看这是为什么？
+  - [ ] 有没有必要把所有的逻辑都抽离到mobx里去？
+  - [ ] 构建完整的entity缓存机制。目前看来，server对entity的类型定义有点问题。
   
 ### 来不及细看的东西
 
