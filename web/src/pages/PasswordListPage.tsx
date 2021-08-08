@@ -73,7 +73,7 @@ class PasswordListPage extends PureComponent<Props, State> {
 
   renderPasswordItem(item: Partial<PasswordInfoPlainData>) {
     return (
-      <div>
+      <div key={item.id}>
         <span>{item.id}</span>
         <span>{item.name}</span>
         <span>{item.account}</span>

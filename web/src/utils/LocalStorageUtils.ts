@@ -2,6 +2,7 @@
 // eslint有bug，这个enum明明被使用了，依然报错
 enum LocalStorageKeys {
   AuthToken = 'AUTH_TOKEN',
+  PrimaryGPGKey = 'PRIMARY_GPG_KEY',
 }
 /* eslint-enable no-unused-vars */
 
@@ -12,6 +13,20 @@ export const LocalStorageUtils = {
   },
   getAuthToken(): string | null {
     return getItem(LocalStorageKeys.AuthToken);
+  },
+  saveGPGKey(publicKey: string, privateKey = '') {
+    const keys = {
+      publicKey,
+      privateKey,
+    };
+    saveItem(LocalStorageKeys.PrimaryGPGKey, keys);
+  },
+  getGPGKey() {
+    const gpgKey = getItem(LocalStorageKeys.PrimaryGPGKey);
+    return gpgKey as null | { publicKey: string; privateKey: string };
+  },
+  removeGPGKey() {
+    removeItem(LocalStorageKeys.PrimaryGPGKey);
   },
 };
 
@@ -40,4 +55,8 @@ function getItem(key: LocalStorageKeys): any | null {
   } catch (e) {
     return null;
   }
+}
+
+function removeItem(key: LocalStorageKeys): void {
+  localStorage.removeItem(key);
 }

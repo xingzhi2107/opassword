@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import PasswordListPage from './pages/PasswordListPage';
 import CreateEditPasswordPage from './pages/CreateEditPasswordPage';
+import SetupGPGPage from './pages/SetupGPGPage';
 
 import AuthPageContainer from './components/AuthRoute';
 
@@ -63,6 +64,17 @@ export const routes: RouteConfig[] = [
       return (
         <AuthPageContainer>
           <CreateEditPasswordPage passwordId={passwordId} />
+        </AuthPageContainer>
+      );
+    },
+  },
+  {
+    path: '/setup/gpg',
+    exact: true,
+    render: () => {
+      return (
+        <AuthPageContainer>
+          <SetupGPGPage />
         </AuthPageContainer>
       );
     },

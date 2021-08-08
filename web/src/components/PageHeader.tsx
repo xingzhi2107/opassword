@@ -59,6 +59,9 @@ class PageHeader extends PureComponent<Props, State> {
           <Link className={classes.navItem} to="/passwords/new">
             {'新建密码'}
           </Link>
+          <Link className={classes.navItem} to="/setup/gpg">
+            {'配置GPG'}
+          </Link>
           <Button onClick={this.handleClickLogout} text="退出" />
         </>
       );

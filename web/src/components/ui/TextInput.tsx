@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, FocusEventHandler } from 'react';
 import { PureComponent } from 'react';
 import withStyles, { WithStylesProps } from 'react-jss';
 import { observer } from 'mobx-react';
@@ -19,11 +19,15 @@ interface OwnProps {
   rows?: number;
   readOnly?: boolean;
   autoComplete?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 interface Props extends WithStylesProps<typeof styles>, OwnProps {}
 
 interface State {}
+
+type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 const styles = {
   input: {
@@ -78,6 +82,8 @@ class TextInputClass extends PureComponent<Props, State> {
       onChange: this.handleOnChange,
       readOnly,
       autoComplete,
+      onFocus: this.handleOnFocus,
+      onBlur: this.handleOnBlur,
     };
 
     if (multipleLine) {
@@ -87,11 +93,19 @@ class TextInputClass extends PureComponent<Props, State> {
     }
   }
 
-  handleOnChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  handleOnChange = (e: ChangeEvent<InputElement>) => {
     const text = e.target.value;
     if (this.props.onTextChange) {
       this.props.onTextChange(text);
     }
+  };
+
+  handleOnFocus: FocusEventHandler<InputElement> = () => {
+    if (this.props.onFocus) this.props.onFocus();
+  };
+
+  handleOnBlur: FocusEventHandler<InputElement> = () => {
+    if (this.props.onBlur) this.props.onBlur();
   };
 }
 
