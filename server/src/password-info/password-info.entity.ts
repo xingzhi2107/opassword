@@ -19,7 +19,7 @@ export class PasswordInfoEntity extends OPBaseEntity {
   account: string;
 
   @Column({ type: 'text', nullable: false })
-  @Length(0, 400)
+  @Length(0, 10000)
   encryptedPassword: string;
 
   @Column({ default: '', length: 225 })
@@ -27,6 +27,6 @@ export class PasswordInfoEntity extends OPBaseEntity {
   webSite: string;
 
   @Column({ type: 'text', nullable: true })
-  @Length(0, 400)
+  @Length(0, 1000)
   note: string;
 }
