@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { PasswordInfoEntity } from './password-info.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -19,6 +19,9 @@ import {
 } from '../common/common.dto';
 import { ServiceUtils } from '../common/common.service';
 import { strict as assert } from 'assert';
+import { OPException } from '../common/common.error';
+import { UserErrorCodes } from '../user/user.error';
+import { MiscUtils } from '../utils/MiscUtils';
 
 @Injectable()
 export class PasswordInfoService {
@@ -37,7 +40,10 @@ export class PasswordInfoService {
     });
     const errors = await validate(passwordInfo);
     if (errors.length > 0) {
-      throw new BadRequestException(errors);
+      throw new OPException(
+        UserErrorCodes.BadRequest,
+        MiscUtils.getValidateMsg(errors),
+      );
     } else {
       const savedPasswordInfo = await this.passwordInfoRepository.save(
         passwordInfo,

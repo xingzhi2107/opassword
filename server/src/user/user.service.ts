@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { validate } from 'class-validator';
@@ -18,6 +18,7 @@ import { OPException } from '../common/common.error';
 import { UserErrorCodes } from './user.error';
 import * as config from '../config';
 import { StringUtils } from '../utils/StringUtils';
+import { MiscUtils } from '../utils/MiscUtils';
 
 @Injectable()
 export class UserService {
@@ -38,7 +39,10 @@ export class UserService {
 
     const errors = await validate(user);
     if (errors.length > 0) {
-      throw new BadRequestException(errors);
+      throw new OPException(
+        UserErrorCodes.BadRequest,
+        MiscUtils.getValidateMsg(errors),
+      );
     } else {
       user.password = await this.hashPassword(user.password);
       const savedUser = await this.userRepository.save(user);
