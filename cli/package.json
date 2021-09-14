@@ -1,7 +1,7 @@
 {
   "name": "opassword-cli",
   "description": "opassword命令行版本",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Xingzhi @xingzhi2107",
   "bin": {
     "opass": "./bin/run"
