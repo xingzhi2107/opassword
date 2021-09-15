@@ -125,3 +125,8 @@ EXAMPLE
 
 _See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/view-gpg-key.ts)_
 <!-- commandsstop -->
+
+## Change log
+
+* v1.0.2 基本流程
+* v1.0.3 修复search命令不能清除缓存

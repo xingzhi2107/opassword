@@ -22,6 +22,7 @@ export default class Search extends Command {
       char: 'c',
       description: 'use cache',
       default: true,
+      allowNo: true,
     }),
   };
 
@@ -46,7 +47,7 @@ export default class Search extends Command {
       while (page > 0) {
         const res = await apis.fetchPasswordInfoIds({
           'per-page': 100,
-          page: 1,
+          page,
         });
         if (res.errcode === 0) {
           const ids = res.data.ids;
@@ -88,19 +89,21 @@ export default class Search extends Command {
     }
     const passwordInfosMapping = await Storage.getPasswordInfos();
     const passwordInfos = Object.values(passwordInfosMapping);
-    const choices = passwordInfos.map((x) => `${x.id} ${x.name}`);
+    const choices = passwordInfos.map((x) => {
+      return {
+        name: x.name,
+        value: x.id,
+      };
+    });
     const prompt = new enquirer.AutoComplete({
       name: 'result',
       message: 'Pick password info',
       limit: 10,
-      initial: 2,
-      choices: choices,
+      initial: 0,
+      choices,
     });
 
-    const promptRes = await prompt.run();
-    logger('pick password', 'log', promptRes);
-
-    const selectedId = Number.parseInt(promptRes.split(' ')[0]);
+    const selectedId = await prompt.run();
     logger('pick password id', 'log', selectedId);
 
     const passwordInfo = passwordInfosMapping[selectedId];
