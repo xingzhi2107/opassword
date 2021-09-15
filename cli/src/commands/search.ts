@@ -91,7 +91,7 @@ export default class Search extends Command {
     const passwordInfos = Object.values(passwordInfosMapping);
     const choices = passwordInfos.map((x) => {
       return {
-        name: x.name,
+        message: `Title:   ${x.name}\nAccount: ${x.account}\nURL:     ${x.webSite}\n`,
         value: x.id,
       };
     });
@@ -100,7 +100,7 @@ export default class Search extends Command {
       message: 'Pick password info',
       limit: 10,
       initial: 0,
-      choices,
+      choices: choices,
     });
 
     const selectedId = await prompt.run();
