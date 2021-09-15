@@ -62,7 +62,6 @@ export default class New extends Command {
       gpgKey,
     );
     logger(`encrypted password with '${gpgKey}' key: ${encryptedPassword}`);
-    console.log(encryptedPassword.length);
 
     const dto: CreatePasswordInfoDto = {
       name: promptRes.name.trim(),
