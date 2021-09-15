@@ -15,11 +15,11 @@ opassword命令行版本
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g opassword-cli
+$ npm install -g @xingzhi2107/opassword-cli
 $ opass COMMAND
 running command...
 $ opass (-v|--version|version)
-opassword-cli/1.0.0 darwin-x64 node-v14.16.1
+@xingzhi2107/opassword-cli/1.0.3 darwin-x64 node-v14.16.1
 $ opass --help [COMMAND]
 USAGE
   $ opass COMMAND
@@ -29,6 +29,7 @@ USAGE
 # Commands
 <!-- commands -->
 * [`opass help [COMMAND]`](#opass-help-command)
+* [`opass import [FILE]`](#opass-import-file)
 * [`opass login`](#opass-login)
 * [`opass new`](#opass-new)
 * [`opass search [KEYWORD]`](#opass-search-keyword)
@@ -52,6 +53,20 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
 
+## `opass import [FILE]`
+
+import password infos from json
+
+```
+USAGE
+  $ opass import [FILE]
+
+EXAMPLE
+  $ opass import test.json
+```
+
+_See code: [src/commands/import.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/import.ts)_
+
 ## `opass login`
 
 login
@@ -64,7 +79,7 @@ EXAMPLE
   $ opass login
 ```
 
-_See code: [src/commands/login.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/login.ts)_
+_See code: [src/commands/login.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/login.ts)_
 
 ## `opass new`
 
@@ -78,7 +93,7 @@ EXAMPLE
   $ opass new
 ```
 
-_See code: [src/commands/new.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/new.ts)_
 
 ## `opass search [KEYWORD]`
 
@@ -89,13 +104,13 @@ USAGE
   $ opass search [KEYWORD]
 
 OPTIONS
-  -c, --cache  use cache
+  -c, --[no-]cache  use cache
 
 EXAMPLE
   $ opass search google
 ```
 
-_See code: [src/commands/search.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/search.ts)_
+_See code: [src/commands/search.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/search.ts)_
 
 ## `opass set-gpg-key [KEY]`
 
@@ -109,7 +124,7 @@ EXAMPLE
   $ opass set-gpg-key 1234
 ```
 
-_See code: [src/commands/set-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/set-gpg-key.ts)_
+_See code: [src/commands/set-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/set-gpg-key.ts)_
 
 ## `opass view-gpg-key`
 
@@ -123,10 +138,11 @@ EXAMPLE
   $ opass view-gpg-key
 ```
 
-_See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.0/src/commands/view-gpg-key.ts)_
+_See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/view-gpg-key.ts)_
 <!-- commandsstop -->
 
 ## Change log
 
 * v1.0.2 基本流程
 * v1.0.3 修复search命令不能清除缓存
+* v1.0.4 新命令import
