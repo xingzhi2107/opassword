@@ -19,7 +19,7 @@ $ npm install -g @xingzhi2107/opassword-cli
 $ opass COMMAND
 running command...
 $ opass (-v|--version|version)
-@xingzhi2107/opassword-cli/1.0.3 darwin-x64 node-v14.16.1
+@xingzhi2107/opassword-cli/1.0.4 darwin-x64 node-v14.16.1
 $ opass --help [COMMAND]
 USAGE
   $ opass COMMAND
@@ -65,7 +65,7 @@ EXAMPLE
   $ opass import test.json
 ```
 
-_See code: [src/commands/import.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/import.ts)_
+_See code: [src/commands/import.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/import.ts)_
 
 ## `opass login`
 
@@ -79,7 +79,7 @@ EXAMPLE
   $ opass login
 ```
 
-_See code: [src/commands/login.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/login.ts)_
+_See code: [src/commands/login.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/login.ts)_
 
 ## `opass new`
 
@@ -93,7 +93,7 @@ EXAMPLE
   $ opass new
 ```
 
-_See code: [src/commands/new.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/new.ts)_
 
 ## `opass search [KEYWORD]`
 
@@ -110,7 +110,7 @@ EXAMPLE
   $ opass search google
 ```
 
-_See code: [src/commands/search.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/search.ts)_
+_See code: [src/commands/search.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/search.ts)_
 
 ## `opass set-gpg-key [KEY]`
 
@@ -124,7 +124,7 @@ EXAMPLE
   $ opass set-gpg-key 1234
 ```
 
-_See code: [src/commands/set-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/set-gpg-key.ts)_
+_See code: [src/commands/set-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/set-gpg-key.ts)_
 
 ## `opass view-gpg-key`
 
@@ -138,7 +138,7 @@ EXAMPLE
   $ opass view-gpg-key
 ```
 
-_See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.3/src/commands/view-gpg-key.ts)_
+_See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/view-gpg-key.ts)_
 <!-- commandsstop -->
 
 ## Change log
@@ -146,3 +146,4 @@ _See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opasswo
 * v1.0.2 基本流程
 * v1.0.3 修复search命令不能清除缓存
 * v1.0.4 新命令import
+* v1.0.5 优化search命令的prompt的文本，显示更多的信息
