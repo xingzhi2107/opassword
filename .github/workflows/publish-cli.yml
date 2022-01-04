@@ -1,0 +1,27 @@
+name: publish cli
+on:
+  push:
+    tags:
+      - 'js-cli_v*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14.16.x'
+        registry-url: 'https://npm.pkg.github.com'
+    - name: Install dependencies
+      shell: bash
+      working-directory: cli
+      run: yarn install
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish
+      shell: bash
+      working-directory: cli
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
