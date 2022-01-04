@@ -19,7 +19,7 @@ $ npm install -g opass-cli
 $ opass COMMAND
 running command...
 $ opass (-v|--version|version)
-opass-cli/1.0.6 linux-x64 node-v14.17.3
+opass-cli/1.0.7 linux-x64 node-v14.17.3
 $ opass --help [COMMAND]
 USAGE
   $ opass COMMAND
