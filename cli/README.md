@@ -135,3 +135,5 @@ EXAMPLE
 * v1.0.3 修复search命令不能清除缓存
 * v1.0.4 新命令import
 * v1.0.5 优化search命令的prompt的文本，显示更多的信息
+* v1.0.6 清理代码
+* v1.0.7 触发release
