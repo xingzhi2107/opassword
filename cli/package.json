@@ -1,8 +1,8 @@
 {
-  "name": "@xingzhi2107/opassword-cli",
+  "name": "opass-cli",
   "description": "opassword命令行版本",
   "version": "1.0.5",
-  "author": "Xingzhi @xingzhi2107",
+  "author": "Xingzhi(xingzhi@petalmail.com)",
   "bin": {
     "opass": "./bin/run"
   },
@@ -13,10 +13,10 @@
     "@oclif/plugin-help": "^3",
     "@types/node-persist": "^3.1.2",
     "@types/uuid": "^8.3.1",
-    "@xingzhi2107/opassword-js-sdk": "1.0.0-rc.4",
     "enquirer": "^2.3.6",
     "kleur": "^4.1.4",
     "node-persist": "^3.1.0",
+    "opass-js-sdk": "^1.0.0-rc.4",
     "tslib": "^1",
     "uuid": "^8.3.2"
   },
@@ -70,13 +70,5 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
-  "types": "lib/index.d.ts",
-  "publishConfig": {
-	  "registry": "https://npm.pkg.github.com"
-  },
-  "repository": {
-	  "type": "git",
-	  "url": "ssh://git@github.com/xingzhi2107/opassword.git",
-	  "directory": "cli"
-  }
+  "types": "lib/index.d.ts"
 }
