@@ -26,6 +26,7 @@ export default class Import extends Command {
   ];
 
   async run() {
+    logger('run');
     const { args } = this.parse(Import);
     await checkAuth();
     const gpgKey = await Storage.getGpgKey();

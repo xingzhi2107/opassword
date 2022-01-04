@@ -15,11 +15,11 @@ opassword命令行版本
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g @xingzhi2107/opassword-cli
+$ npm install -g opass-cli
 $ opass COMMAND
 running command...
 $ opass (-v|--version|version)
-@xingzhi2107/opassword-cli/1.0.4 darwin-x64 node-v14.16.1
+opass-cli/1.0.6 linux-x64 node-v14.17.3
 $ opass --help [COMMAND]
 USAGE
   $ opass COMMAND
@@ -65,8 +65,6 @@ EXAMPLE
   $ opass import test.json
 ```
 
-_See code: [src/commands/import.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/import.ts)_
-
 ## `opass login`
 
 login
@@ -79,8 +77,6 @@ EXAMPLE
   $ opass login
 ```
 
-_See code: [src/commands/login.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/login.ts)_
-
 ## `opass new`
 
 new password info
@@ -92,8 +88,6 @@ USAGE
 EXAMPLE
   $ opass new
 ```
-
-_See code: [src/commands/new.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/new.ts)_
 
 ## `opass search [KEYWORD]`
 
@@ -110,8 +104,6 @@ EXAMPLE
   $ opass search google
 ```
 
-_See code: [src/commands/search.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/search.ts)_
-
 ## `opass set-gpg-key [KEY]`
 
 Set gpg key
@@ -124,8 +116,6 @@ EXAMPLE
   $ opass set-gpg-key 1234
 ```
 
-_See code: [src/commands/set-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/set-gpg-key.ts)_
-
 ## `opass view-gpg-key`
 
 View gpg key
@@ -137,8 +127,6 @@ USAGE
 EXAMPLE
   $ opass view-gpg-key
 ```
-
-_See code: [src/commands/view-gpg-key.ts](https://github.com/xingzhi2107/opassword/blob/v1.0.4/src/commands/view-gpg-key.ts)_
 <!-- commandsstop -->
 
 ## Change log

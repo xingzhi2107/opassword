@@ -33,7 +33,7 @@ export default class Search extends Command {
   ];
 
   async run() {
-    const { flags, args } = this.parse(Search);
+    const { flags } = this.parse(Search);
     await checkAuth();
     const gpgKey = await Storage.getGpgKey();
     if (!gpgKey) {
