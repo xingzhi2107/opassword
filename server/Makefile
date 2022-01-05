@@ -14,6 +14,14 @@ build-docker:
 attach-www-shell:
 	docker exec -it www.opassword.service /bin/sh
 
+run-server--dev:
+	docker stop www.opassword.service 2>&1 > /dev/null || echo "stop"
+	docker rm www.opassword.service 2>&1 > /dev/null || echo "clean"
+	docker run \
+		--name www.opassword.service \
+		--link mysql.opassword.service \
+		-it \
+		opassword-server:latest /bin/sh
 
 run-server:
 	docker stop www.opassword.service 2>&1 > /dev/null || echo "stop"
