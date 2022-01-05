@@ -7950,10 +7950,10 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-opass-js-sdk@^1.0.0-rc.4:
-  version "1.0.0-rc.4"
-  resolved "https://registry.npmjs.org/opass-js-sdk/-/opass-js-sdk-1.0.0-rc.4.tgz#705576b7afc00f5e437db4ad7348f757a510267a"
-  integrity sha512-d1ViDrB+jukcjme5sRqAwwZtDbMQB0FrtlJglJpwwwOPVH73+q+L1F5gdNDMGlAcVfZb9QnQgIzj4ZIw0fe8MA==
+opass-js-sdk@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/opass-js-sdk/-/opass-js-sdk-1.0.1.tgz#9cf95dc38a322ff3ca40e491db380a142f07a6b1"
+  integrity sha512-nmT9jMsvz5rYUdKLY9cdqFnVjI0YzVQGy4zN+6YN1rcF43pIwXrgUD2GmzYkaNjXS6HvRQpCM4g4DEsJfg6dyg==
   dependencies:
     axios "^0.21.1"
 

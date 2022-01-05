@@ -1,10 +1,6 @@
 import { observable, action, makeObservable } from 'mobx';
 import { passwordApis } from '../ApiClient';
-import {
-  LoginByPasswordDto,
-  SignUpByEmailDto,
-  UserData,
-} from 'opass-js-sdk';
+import { LoginByPasswordDto, SignUpByEmailDto, UserData } from 'opass-js-sdk';
 import { appStore } from './AppStore';
 
 export class AuthStore {
