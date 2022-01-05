@@ -1,5 +1,5 @@
 import * as NodeStorage from 'node-persist';
-import { UserData, PasswordInfoPlainData } from '@xingzhi2107/opassword-js-sdk';
+import { UserData, PasswordInfoPlainData } from 'opass-js-sdk';
 import * as fs from 'fs';
 
 const DIR = `${process.env.HOME}/.config/opass/`;

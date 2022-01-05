@@ -1,6 +1,6 @@
 import { Storage } from './storage';
 import { Console } from './console';
-import { UserData } from '@xingzhi2107/opassword-js-sdk';
+import { UserData } from 'opass-js-sdk';
 
 export async function checkAuth(): Promise<UserData> {
   const currUser = await Storage.getCurrUser();

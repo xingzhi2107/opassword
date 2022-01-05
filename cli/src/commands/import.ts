@@ -3,7 +3,7 @@ import { getApiClient } from '../api';
 import { Storage } from '../storage';
 import { Console } from '../console';
 import { checkAuth } from '../auth';
-import { CreatePasswordInfoDto } from '@xingzhi2107/opassword-js-sdk/src/apis/server-types/password-info/password-info.dto';
+import { CreatePasswordInfoDto } from 'opass-js-sdk/src/apis/server-types/password-info/password-info.dto';
 import { Utils } from '../utils';
 import { getLogger } from '../logger';
 
@@ -26,6 +26,7 @@ export default class Import extends Command {
   ];
 
   async run() {
+    logger('run');
     const { args } = this.parse(Import);
     await checkAuth();
     const gpgKey = await Storage.getGpgKey();

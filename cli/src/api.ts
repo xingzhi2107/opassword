@@ -1,4 +1,4 @@
-import { OPasswordApis } from '@xingzhi2107/opassword-js-sdk';
+import { OPasswordApis } from 'opass-js-sdk';
 import { Storage } from './storage';
 
 const apiHost = 'https://opassword.word-collect.com/api';
