@@ -1,4 +1,4 @@
-import { OPasswordApis } from '@xingzhi2107/opassword-js-sdk';
+import { OPasswordApis } from 'opass-js-sdk';
 import { LocalStorageUtils } from './utils/LocalStorageUtils';
 
 const authToken = LocalStorageUtils.getAuthToken();

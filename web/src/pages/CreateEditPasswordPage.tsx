@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import { TextInput, FieldSet, Form, Button } from '../components/ui';
 import { makeObservable, observable } from 'mobx';
 import { passwordApis } from '../ApiClient';
-import { PasswordInfoPlainData } from '@xingzhi2107/opassword-js-sdk';
+import { PasswordInfoPlainData } from 'opass-js-sdk';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { Stores } from '../stores';

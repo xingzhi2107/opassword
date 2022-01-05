@@ -4,7 +4,7 @@ import {
   LoginByPasswordDto,
   SignUpByEmailDto,
   UserData,
-} from '@xingzhi2107/opassword-js-sdk';
+} from 'opass-js-sdk';
 import { appStore } from './AppStore';
 
 export class AuthStore {

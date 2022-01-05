@@ -1,7 +1,7 @@
 import React from 'react';
 import { PureComponent } from 'react';
 import withStyles, { WithStylesProps } from 'react-jss';
-import { PasswordInfoPlainData } from '@xingzhi2107/opassword-js-sdk';
+import { PasswordInfoPlainData } from 'opass-js-sdk';
 import { passwordApis } from '../ApiClient';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui';
